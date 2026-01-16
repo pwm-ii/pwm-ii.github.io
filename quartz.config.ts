@@ -11,8 +11,10 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "plausible",
-    },
+  provider: "umami",
+  websiteId: "f9fb3808-66be-451c-b5ce-f9e2c8ace018",
+  host: "https://cloud.umami.is/script.js", 
+},
     locale: "en-US",
     baseUrl: "pwm-ii.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],

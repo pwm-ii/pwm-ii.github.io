@@ -24,14 +24,13 @@ For my undergraduate Senior Design Project (<i>EEC 195AB - Winter/Spring Quarter
 
 <p align="center">
   <iframe 
-    width="560" 
-    height="315" 
     src="https://www.youtube-nocookie.com/embed/FCBzzya6A4A?si=JtHXrhgWlkxcqkjq&vq=hd720" 
     title="YouTube video player" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     referrerpolicy="strict-origin-when-cross-origin" 
-    allowfullscreen>
+    allowfullscreen
+    style="width: 100%; max-width: 560px; aspect-ratio: 16 / 9;">
   </iframe>
 </p>
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">

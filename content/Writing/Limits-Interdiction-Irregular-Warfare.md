@@ -455,7 +455,7 @@ The core of French political failure in the Algerian War was a simple but diffic
 
 <u>**INDICATORS OF DECOUPLED METHODS AND GOALS:**</u>
 
-* **Diverging Metrics of Tactical Performance and Political Effectiveness**
+* **Diverging metrics of tactical performance and political effectiveness.**
 
 The Morice Line enabled a high interception rate which sealed Algeria off from FLN sanctuaries. The Challe Plan used this to annihilate insurgents within Algeria. These outcomes are reflective of high performance, best verified by the drastic growth in external ALN forces and decrease in internal ones. 
 
@@ -464,7 +464,7 @@ Notably, however, this period saw the diplomatic standing and permanency of the 
 The fact that high performance did not translate into high effectiveness should be a significant indicator of methods that are disconnected from the desired political goal. It is important to note that this is only true assuming (1) correctly formulated metrics and (2) ways to accurately measure them.
 
 
-* **Military Organizations Filling Institutional Vacuums**
+* **Military organizations filling institutional vacuums.**
 
 When military methods and political goals become decoupled, political systems tend to break down. This generally occurs because the military has been given no political goal, an unclear political goal, or an unachievable political goal. This eventually incentivizes the military to either give itself a goal it believes is achievable with the available means (See: French Army and Integration) or it may seek to end the war altogether (See: Carnation Revolution, Portuguese military coup which overthrew the Estado Novo).
 
