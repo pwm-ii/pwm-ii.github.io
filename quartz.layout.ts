@@ -8,8 +8,6 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
     },
   }),
 }
@@ -34,16 +32,39 @@ export const defaultContentPageLayout: PageLayout = {
           Component: Component.Search(),
           grow: true,
         },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
+        //{ Component: Component.Darkmode() },
+        //{ Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      folderDefaultState: "collapsed",
+      sortFn: (a, b) => {
+        // Define the specific order you want (MUST match the visible title exactly)
+        const order = ["Technical Projects", "Notes", "Writing"]
+
+        // Get the index using displayName
+        let idxA = order.indexOf(a.displayName)
+        let idxB = order.indexOf(b.displayName)
+
+        // If the item isn't in your list, assign it a high number (push to bottom)
+        if (idxA === -1) idxA = 999
+        if (idxB === -1) idxB = 999
+
+        // Sort by the custom index first
+        if (idxA !== idxB) return idxA - idxB
+
+        // Default to alphabetical sort for everything else
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+    }),
   ],
   right: [
-    Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
+    Component.Graph(),
+    //Component.Backlinks(),
   ],
 }
 
@@ -59,10 +80,32 @@ export const defaultListPageLayout: PageLayout = {
           Component: Component.Search(),
           grow: true,
         },
-        { Component: Component.Darkmode() },
+        //{ Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      sortFn: (a, b) => {
+        // Define the specific order you want (MUST match the visible title exactly)
+        const order = ["Technical Projects", "Notes", "Writing"]
+
+        // Get the index using displayName
+        let idxA = order.indexOf(a.displayName)
+        let idxB = order.indexOf(b.displayName)
+
+        // If the item isn't in your list, assign it a high number (push to bottom)
+        if (idxA === -1) idxA = 999
+        if (idxB === -1) idxB = 999
+
+        // Sort by the custom index first
+        if (idxA !== idxB) return idxA - idxB
+
+        // Default to alphabetical sort for everything else
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+    }),
   ],
   right: [],
 }

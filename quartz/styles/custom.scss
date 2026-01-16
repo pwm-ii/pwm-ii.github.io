@@ -1,3 +1,57 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// Remove the huge "Home" title from the landing page only
+[data-slug="index"] h1.article-title {
+  display: none !important;
+}
+
+// Removes the gap left behind by the hidden title
+[data-slug="index"] .content-container {
+  padding-top: 0 !important;
+}
+
+// Hide Graph View ONLY on the Home Page
+body[data-slug="index"] .graph {
+  display: none !important;
+}
+
+// Hide Date and Reading Time on the Home Page only
+body[data-slug="index"] .content-meta {
+  display: none;
+}
+
+//Adjust title size in Home Page
+body[data-slug="index"] .article-title {
+  font-size: 1.25rem !important;
+}
+
+// Hide Date and Metadata for all pages in "Technical Projects"
+body[data-slug="technical-projects"] .content-meta {
+  display: none !important;
+}
+
+/* Force all headers to use the Light 300 weight */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+/* Force Site Title (Top Left) to Light 300 */
+.page-title {
+  font-weight: 500 !important;
+  //letter-spacing: -0.02em; /* Optional: tightens the letters slightly for a cleaner look */
+}
+
+/* Force specific weights for links inside titles if necessary */
+.page-title a {
+  font-weight: 500 !important;
+}
+
+/* Force Explorer Folder Names (Sidebar headers like "Technical Projects") to Light */
+.explorer .folder-button {
+  font-weight: 500 !important;
+}
+
+/* Force "Explorer" title itself to Light */
+.explorer h3 {
+  font-weight: 500 !important;
+}

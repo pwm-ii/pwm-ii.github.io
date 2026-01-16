@@ -29,7 +29,10 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
     if (text) {
       const segments: (string | JSX.Element)[] = []
 
-      if (fileData.dates) {
+      // MODIFIED: Check for 'duration' first, otherwise show standard date
+      if (fileData.frontmatter?.duration) {
+        segments.push(<span>{fileData.frontmatter.duration}</span>)
+      } else if (fileData.dates) {
         segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
       }
 
