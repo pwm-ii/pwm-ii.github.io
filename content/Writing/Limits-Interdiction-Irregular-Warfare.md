@@ -1,6 +1,6 @@
 ---
 title: The Limits of Interdiction in Irregular Warfare
-date: 2026-01-01
+date: 2025-09-13
 tags:
   - French History
   - Algerian War
