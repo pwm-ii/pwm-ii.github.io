@@ -37,7 +37,7 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({
-      folderDefaultState: "collapsed",
+      folderDefaultState: "open",
       sortFn: (a, b) => {
         // Define the specific order you want (MUST match the visible title exactly)
         const order = ["Technical Projects", "Notes", "Writing"]
