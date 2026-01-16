@@ -437,43 +437,6 @@ Aside from their varying levels of militancy, this act highlights a central diff
 
 The core of French political failure in the Algerian War was a simple but difficult problem: the French government wanted to leave, while the officer corps wanted to stay. The goal of Integration, which the army had created for itself during the Fourth Republic, was incompatible with the Algerian policy of de Gaulle, who now wished to reassert his dominance. This political breakdown occurred in spite of their military successes. No matter how effective they were, French methods could never made up for the faulty political foundations of the war. And they were effective indeed. Over the course of the conflict, the French achieved something in Algeria which not even the U.S. could do in Vietnam: the successful interdiction of large-scale insurgent logistics. This interdiction was used to successfully reverse the conventionalization of the fighting within Algeria. In essence, you could say the French army was not defeated in Algeria because their interdiction was inadequate. They lost the war because they had no way to convert their military success into political results. This reveals a very important lesson: Successful counterinsurgency requires interdiction, but interdiction does not inherently provide success to counterinsurgency.
 
-<br>
-
----
-
-<br>
-
-<u>**ACTIONABLE TAKEAWAYS:**</u>
-
-* **COIN must work backwards from an achievable goal which is informed by the political reality on the ground.** This goal must be concretely defined in the positive. Methods must be derived from this outcome, rather than dictate its form. In all of the states discussed, the demographics of the insurgent zone precluded any legitimate maintenance of the status quo. Morality, international law, and practical logistics precluded any significant change in those demographics. This rendered their political goals incoherent in a way that military methods couldn't change.
-
-* **Interdiction is a necessary element to conducting COIN, but not independently sufficient.** To reach the desired political end state, it is critical to control the flow of insurgents. Controlling the flow of insurgents alone does not create the political end state.
-
-* **Surrogate Warfare is an attractive method of combatting insurgents in active sanctuaries while maintaining plausible deniability.** However, there is a tradeoff in internationalization. In the South African Border War, the use of surrogate forces in Angola led the Cuban Revolutionary Armed Forces to send conventional troops. This escalated the conflict beyond the threshold that South Africa could politically sustain.
-
-<br>
-
-<u>**INDICATORS OF DECOUPLED METHODS AND GOALS:**</u>
-
-* **Diverging metrics of tactical performance and political effectiveness.**
-
-The Morice Line enabled a high interception rate which sealed Algeria off from FLN sanctuaries. The Challe Plan used this to annihilate insurgents within Algeria. These outcomes are reflective of high performance, best verified by the drastic growth in external ALN forces and decrease in internal ones. 
-
-Notably, however, this period saw the diplomatic standing and permanency of the FLN continue to grow. The methods used by the French may have been militarily effective, but they undermined their legitimacy in ways that pacification efforts couldn't repair. These outcomes are reflective of low effectiveness.
-
-The fact that high performance did not translate into high effectiveness should be a significant indicator of methods that are disconnected from the desired political goal. It is important to note that this is only true assuming (1) correctly formulated metrics and (2) ways to accurately measure them.
-
-
-* **Military organizations filling institutional vacuums.**
-
-When military methods and political goals become decoupled, political systems tend to break down. This generally occurs because the military has been given no political goal, an unclear political goal, or an unachievable political goal. This eventually incentivizes the military to either give itself a goal it believes is achievable with the available means (See: French Army and Integration) or it may seek to end the war altogether (See: Carnation Revolution, Portuguese military coup which overthrew the Estado Novo).
-
-If military leadership is advocating for a political end-state that the government has not explicitly endorsed, this is a significant indicator of a goal which is disconnected from the available methods.
-
-
-
-
-
 ---
 
 ## References
