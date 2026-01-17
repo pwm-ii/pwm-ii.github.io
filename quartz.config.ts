@@ -13,7 +13,7 @@ const config: QuartzConfig = {
     analytics: {
   provider: "umami",
   websiteId: "f9fb3808-66be-451c-b5ce-f9e2c8ace018",
-  host: "https://cloud.umami.is/script.js", 
+  host: "https://cloud.umami.is", 
 },
     locale: "en-US",
     baseUrl: "pwm-ii.github.io",
