@@ -30,28 +30,39 @@ body[data-slug="technical-projects"] .content-meta {
   display: none !important;
 }
 
-/* Force all headers to use the Light 300 weight */
+// Force all headers to use the Light 300 weight
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
-/* Force Site Title (Top Left) to Light 300 */
+// Force Site Title (Top Left) to Light 300
 .page-title {
   font-weight: 500 !important;
-  //letter-spacing: -0.02em; /* Optional: tightens the letters slightly for a cleaner look */
 }
 
-/* Force specific weights for links inside titles if necessary */
+// Force specific weights for links inside titles if necessary
 .page-title a {
   font-weight: 500 !important;
 }
 
-/* Force Explorer Folder Names (Sidebar headers like "Technical Projects") to Light */
+// Force Explorer Folder Names (Sidebar headers like "Technical Projects") to Light
 .explorer .folder-button {
   font-weight: 500 !important;
 }
 
-/* Force "Explorer" title itself to Light */
+// Force "Explorer" title itself to Light
 .explorer h3 {
   font-weight: 500 !important;
+}
+
+// Remove border and title from the Graph View component
+.graph {
+  border: none !important;              // Removes the box border */
+  box-shadow: none !important;          // Removes any shadow if present
+  outline: none !important;             // Removes focus outlines
+  background: transparent !important;   // Ensures no background color remains
+
+  h3 {
+    display: none !important;           // Hides the text "Graph View"
+  }
 }
