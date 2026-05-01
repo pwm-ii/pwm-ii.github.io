@@ -17,7 +17,6 @@ const config: QuartzConfig = {
               },
     locale: "en-US",
     baseUrl: "pwm-ii.github.io",
-    ogImage: "/static/icon.png",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
