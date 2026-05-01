@@ -11,12 +11,13 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-  provider: "umami",
-  websiteId: "f9fb3808-66be-451c-b5ce-f9e2c8ace018",
-  host: "https://cloud.umami.is", 
-},
+      provider: "umami",
+      websiteId: "f9fb3808-66be-451c-b5ce-f9e2c8ace018",
+      host: "https://cloud.umami.is", 
+              },
     locale: "en-US",
     baseUrl: "pwm-ii.github.io",
+    ogImage: "/static/icon.png",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
