@@ -473,7 +473,8 @@ The core of French political failure in the Algerian War was a simple but diffic
 
 [16] Raoul Girardet, “Civil and Military Power in the Fourth Republic,” trans. Martha Finkelstein, in *Changing Patterns of Military Politics*, ed. Samuel P. Huntington. New York: Free Press of Glencoe, 1962, pp. 121–149. Translated from Raoul Girardet, “Pouvoir civil et pouvoir militaire en France sous la Quatrième République,” paper, 7th Round Table, International Political Science Association (Opatija, Yugoslavia), September 1959; and “Pouvoir civil et pouvoir militaire dans la France contemporaine,” *Revue Française de Science Politique* 10 (March 1960): 5–38. 
 <div style="height: 0.5em;"></div>
-**Note:**This article was actually cited by the defense counsel for General Maurice Challe during the trial for actions taken during the Algiers Putsch, 1961. The author, Girardet, was also reportedly detained during the crisis. [Peter Paret, *French Revolutionary Warfare: From Indochina to Algeria: The Analysis of a Political and Military Doctrine*, Princeton Studies in World Politics, no. 6. New York: F.A. Praeger for the Center of International Studies, Princeton University, 1964, p. 145.]
+
+**Note:** This article was actually cited by the defense counsel for General Maurice Challe during the trial for actions taken during the Algiers Putsch, 1961. The author, Girardet, was also reportedly detained during the crisis. [Peter Paret, *French Revolutionary Warfare: From Indochina to Algeria: The Analysis of a Political and Military Doctrine*, Princeton Studies in World Politics, no. 6. New York: F.A. Praeger for the Center of International Studies, Princeton University, 1964, p. 145.]
 
 [17] Paret, *French Revolutionary Warfare*, p. 28.
 
@@ -489,6 +490,7 @@ The core of French political failure in the Algerian War was a simple but diffic
 3. An almost conspiratorial belief that all anti-colonial insurgencies were various fronts of a single “permanent and universal” war being waged against "the west" by the Communist-bloc. It is true that many Communist nations (e.g. USSR, PRC, Cuba) seriously supported anticolonial movements. It is also true that this support was organized and directed with the express intent to weaken U.S.-allied nations. However, to say that this meant that all anticolonial insurgents (e.g. the FLN) were communists or that they were direct agents of the Soviet bloc is laughable. In most cases, the insurgencies predated communist support and later entered into an alliance of convenience. Following independence, many insurgents governed simply as nationalist groups.
 
 **Selected Bibliography on Guerre Révolutionnaire:**
+
 Paret, Peter. “The French Army and La Guerre Révolutionnaire.” *Survival* 1, no. 4 (1959): 111–121.
 
 Paret, Peter. “A Total Weapon of Limited War.” *Royal United Services Institution Journal* 105, no. 624 (1960): 1–8.
@@ -577,7 +579,7 @@ Griffin, Christopher. “Major Combat Operations and Counterinsurgency Warfare: 
 
 [60] Albert Camus, *The Rebel*, trans. Anthony Bower. New York: Vintage International, 1992, p. 240.
 
-[61] **Note:** At the time they unconstitutionally seized power, neither Robespierre in 1793, Barras in 1795, Napoleon III in 1851, Marshal Petain in 1940, nor General de Gaulle in either 1944 or 1958, relied solely on the Army as a source of legitimacy and power. These figures may be described as authoritarian to varying degrees, but it would not be accurate to call any of them military dictators. General Napoleon Bonaparte in 1799 may be the sole exception to this rule. However, this applies mainly to the period before his coronation in 1804. Furthermore, none of the governments through which Napoleon governed can be really called a "military government".
+[61] **Note:** At the time they seized or attained power, neither Robespierre in 1793, Barras in 1795, Napoleon III in 1851, Marshal Petain in 1940, nor General de Gaulle in either 1944 or 1958, relied solely on the Army as a source of legitimacy and power. These figures may be described as authoritarian to varying degrees, or even fascist in the case of Petain, but it would not be strictly accurate to call any of them military dictators. They all relied heavily on the French plebiscitary tradition to convey a sense of popular sovereignty. General Napoleon Bonaparte in 1799 may be the sole exception to this rule, relying heavily on the Army to take power. However, this applies mainly to the period before his coronation in 1804. Furthermore, none of the governments through which Napoleon governed can be really called a "military government".
 
 [62] Domenach, “The French Army in Politics,” p. 193.
 
