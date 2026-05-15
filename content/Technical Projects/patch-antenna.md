@@ -17,9 +17,9 @@ tags:
   </div>
   
   <div style="flex: 1.5; text-align: center;">
-    <img src="MicrostripPatchAntenna.png" width="100%">
+    <img src="MicrostripPatchModel.png" width="100%">
     <p style="font-size: 0.8rem; color: grey; margin-top: -5px;">
-      <em>Figure 2: Simulated Patch Antenna</em>
+      <em>Figure 2: Simulated Patch Antenna, Exported from HFSS</em>
     </p>
   </div>
 
@@ -65,37 +65,10 @@ $$
 ## Simulation
 Using the initial calculated geometry, I simulated the antenna performance with HFSS. This step was used to iteratively refine the calculated values before fabrication. The images below pertain to the final values.
 
-<div style="display: flex; justify-content: center; gap: 20px;">
-  <div style="width: 48%; text-align: center;">
-    <img src="2DPolarPlot-Elevation.png" alt="2D ElevationPlot Patch" width="100%">
-    <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Figure 4: Gain plot, elevation cut. Exported from HFSS</em>
-    </p>
-  </div>
-
-  <div style="width: 48%; text-align: center;">
-    <img src="2DPolarPlot-Azimuth.png" alt="2D AzimuthPlot Patch" width="100%">
-    <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Figure 5: Gain plot, azimuthal cut. Exported from HFSS</em>
-    </p>
-  </div>
-</div>
-
-<div style="display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
-  <div style="width: 40%; text-align: center;">
-    <img src="3DPolarPlot.png" alt="3D PolarPlot Patch" width="100%">
-    <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Figure 6: 3D gain plot. Exported from HFSS</em>
-    </p>
-  </div>
-
-  <div style="width: 55%; text-align: center;">
-    <img src="2DGainContourPlotHFSSPatch.png" alt="2D Gain Contour Plot Patch" width="100%">
-    <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Figure 7: 2D Gain Heatmap. Exported from HFSS</em>
-    </p>
-  </div>
-</div>
+![3D Polar Plot PROJECT](3DPolarPlot.png)
+<p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
+  <em>Figure x: 3D Polar Plot, Normalized Gain. Exported from HFSS</em>
+</p>
 
 
 <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">

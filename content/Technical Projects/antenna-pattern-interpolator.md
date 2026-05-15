@@ -30,17 +30,23 @@ Paul's Interpolation Engine (PIE) is a tool designed to reconstruct the full 3-D
 * This allows you to reconstruct the full pattern using 720 datapoints (360 Azimuth, 360 Elevation). <b>Doing this by measurement would require around 65,000 datapoints</b>.
 * This tool requires ~1% of the required data to function, so there is an obvious tradeoff in accuracy. This is a tool for rapid estimation, not precise calculation.
 
+![Pre Interpolation Pattern](PreInterpolationRaw.png)
+
+<p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
+  <em>Figure 1: PIE Graphic User Interface. Original Pattern Window.</em>
+</p>
+
 ![Cover Page](CoverPage.png)
 
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Figure 1: PIE graphic user interface. 3D Pattern Window</em>
+  <em>Figure 2: PIE Graphic User Interface. Reconstructed 3D Pattern Window.</em>
 </p>
 
 * $\mathbf{G}_{az}(\phi)$ represents the gain in the azimuthal plane where $\theta$ is fixed as $90^\circ$ or $0^\circ$ depending on mounting.
 * $\mathbf{G}_{el}(\theta)$ represents the gain in the elevation plane where $\phi=0^\circ$ for the front hemisphere and $\phi=180^\circ$ for the back.
 * Data must be normalized such that the maximum gain equals $0~\text{dB}$ to preserve the integrity of the Summing Algorithm.
 
-The goal of this tool is to aid in rapid visualization of antenna coverage without the time-consuming full-sphere anechoic measurements or computationally expensive 3-D simulations.
+The goal of this tool is to aid in rapid prototyping and visualization of antenna patterns without the time-consuming anechoic chamber measurements or computationally expensive 3-D simulations.
 
 
 <div class="mermaid-container" style="display: flex; justify-content: center; transform: transform-origin: top center;">
@@ -71,7 +77,7 @@ graph TD
 </div>
 
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Figure 2: Interpolation Flowchart</em>
+  <em>Figure 3: Interpolation Flowchart.</em>
 </p>
 
 <br>
@@ -81,34 +87,35 @@ graph TD
 > 
 > <div align="center">
 >   <img src="U7OutdoorImage.png" alt="UniFi U7 Outdoor Router">
->   <p style="font-size: 0.8rem; color: grey; margin-top: -10px;"><em>Figure 3: UniFi U7 Outdoor Router</em></p>
+>   <p style="font-size: 0.8rem; color: grey; margin-top: -10px;"><em>Figure 4: UniFi U7 Outdoor Router.</em></p>
 > </div>
 > 
 > Contained below are a couple of graphs provided by UniFi for this router [1].
 > 
 > <div align="center">
 >   <img src="U7-Outdoor-Patterns.png" alt="Antenna Pattern">
->   <p style="font-size: 0.8rem; color: grey; margin-top: -10px;"><em>Figure 4: UniFi-provided antenna patterns for the U7 Outdoor Router</em></p>
+>   <p style="font-size: 0.8rem; color: grey; margin-top: -10px;"><em>Figure 5: UniFi-provided antenna patterns for the U7 Outdoor Router.</em></p>
 > </div>
 > 
 > Aside from these graphs, UniFi also provides the data points for their antenna patterns in a `.ant` file:
 > * **First 360 values:** Azimuth plane
 > * **Next 360 values:** Elevation plane
 >
-> All 3D patterns on this page are reconstructed using the `.ant` file for a **U7 Router @ 5 GHz**.
+> All 3D patterns on this page are reconstructed using the `.ant` or `.txt` file for a **U7 Router operating at 5 GHz**.
 
 ## 2D Interpolation
 
-The tool accepts text file inputs (.ant, .txt, .csv) containing a column of gain values (in normalized dB). The only requirements are:
+The tool accepts text file inputs (.ant or .txt) containing a column of gain values. The only requirements are:
  * The total number of data points is an <b>even</b> number divided equally between azimuth and elevation (top half of file is azimuth data, bottom half is elevation).
  * The total number of data points is at least 10 (Minimum: 5 Azimuth, 5 Elevation).
+ * Input gain values should be in dB. The absolute gain reference is discarded when the data is normalised to the peak value.
 
- Before passing these data points for 3-D interpolation, Cubic Splines are used to map the arbitrary number of input points to a standard 360-point grid at 1-degree resolution.
+ Before passing these data points for 3-D interpolation, cubic splines are used to map the arbitrary number of input points to a standard 360-point grid at 1-degree resolution.
 
 ![Interpolation Demonstration](/static/InterpolationDemo.png)
 
  <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-   <em>Figure 5: 2D interpolation using Cubic Splines</em>
+   <em>Figure 6: 2D Interpolation Example with Cubic Splines.</em>
  </p>
 
 ## 3D Interpolation
@@ -120,16 +127,16 @@ The purpose of 3-D interpolation is to take the smoothed input data ($360$ Azimu
 > ![SummingPatternT](ReconstructedPatternSummingTRUE.png)
 
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Figure 6: 3-D radiation pattern reconstructed using the Summing Algorithm</em>
+  <em>Figure 7: 3-D Radiation Pattern Reconstructed with Summing Algorithm.</em>
 </p>
 
-The first method is the Summing Algorithm [3, p.1]. This approach adds the logarithmic (dB) gain elevation and azimuth patterns. This is mathematically equivalent to multiplying the linear gain patterns.
+The first method is the Summing Algorithm [3, p.1]. This approach adds the logarithmic (dB) gain elevation and azimuth cuts. This is mathematically equivalent to multiplying the linear gain patterns.
 
 $$
 {G}_{\text{sum}}(\theta, \phi) = G_{\text{az}}(\phi) + G_{\text{el}}(\theta) \ [dB]
 $$
 
-* This method can perfectly reconstruct omni-directional patterns (e.g., dipoles) with no error due to their inherent axial symmetry [2,p.2].
+* This method can perfectly reconstruct omni-directional patterns (e.g., dipoles) with no error due to their inherent axial symmetry, however, it assumes pattern separability [2,p.2].
 * The Summing method is effective at reconstructing the main lobe of directive antennas but interpolation can fail with side lobes.
 * Summing <u>systematically underestimates gain</u> in complex directional antennas. This can be good if you want a conservative estimate.
 * Summing can introduce artifacts ("creases") at the intersection of the principal cuts.
@@ -141,10 +148,10 @@ $$
 >![ApproximationPatternT](ReconstructedPatternApproximationTRUE.png)
 
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Figure 7: 3-D radiation pattern reconstructed using the Approximation Algorithm</em>
+  <em>Figure 8: 3-D Radiation Pattern Reconstructed with Approximation Algorithm.</em>
 </p>
 
-The Approximation Algorithm is a variation on summing which introduces geometric cross-weighting. This means that the magnitude of the azimuthal cut is used to weigh the contribution of the elevation cut and vice versa. Or in other words, one of the principal planar cuts is related to its orthogonal pair as a function of its normalized linear magnitude. This approach addresses the inherent weakness of summing with reconstructing side lobes.
+The Approximation Algorithm is a variation on summing which introduces geometric cross-weighting (p-norm blend). This means that the magnitude of the azimuthal cut is used to weigh the contribution of the elevation cut and vice-versa. In other words, one of the principal planar cuts is related to its orthogonal pair as a function of its normalized linear magnitude. This approach addresses the inherent weakness of summing with reconstructing side lobes.
 
 At an arbitrary point $(\theta, \phi)$, the approximated antenna gain is [2, p.2-3]:
 
@@ -193,7 +200,7 @@ $$
 
 Interpolation is governed by the <b>normalization parameter ($k$)</b>, which controls the mathematical locus of the weights. Increasing k produces a more conservative (lower gain) estimate.
 * **$k=1$**: Applies standard linear weighting.
-* **$k=2$** (Default): Minimizes approximation error for standard directional antennas [2,p.3].
+* **$k=2$** (Default): Uses Euclidean blending (square root of the sum of squares). This has been seen to minimize approximation error for standard directional antennas [2,p.3].
 * **$k \to \infty$**: The behavior converges to the Summing Algorithm.
 
 <br>
@@ -204,10 +211,10 @@ Interpolation is governed by the <b>normalization parameter ($k$)</b>, which con
 >![HybridPatternT](ReconstructedPatternHybridTRUE.png)
 
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Figure 8: 3-D radiation pattern reconstructed using the Hybrid Algorithm</em>
+  <em>Figure 9: 3-D Radiation Pattern Reconstructed with Hybrid Algorithm.</em>
 </p>
 
-The Hybrid Algorithm [2, p.2] is a weighted mix that uses the Summing algorithm for the main lobe (where it is most accurate) and the approximation algorithm for the side lobes. This approach works by increasing or decreasing the weight of the two algorithms based on angular distance.
+The Hybrid Algorithm [2, p.2] is a weighted mix of the Summing and Approximation algorithms which cross fades based on local gain intensity. This approach works by increasing or decreasing the weight of the two algorithms based on angular distance.
 
 $$
 G_{\text{hyb}}(\theta, \phi) = [G_{\text{sum}}(\phi, \theta) \cdot w_3] + [{G}_{\text{app}}(\theta, \phi) \cdot (1 - w_3)]
@@ -230,34 +237,9 @@ $$
 
 ## Evaluation of Error
 
-For the UniFi antennas, I did not have the full 3-D pattern available to me, only the principal cuts. So 3-D interpolation error was found by comparing the original principal planes with cuts made from the reconstructed 3-D pattern. 
+For the UniFi U7 Outdoor, I did not have the full 3-D pattern available to me, only the principal cuts. It would not have been rigorous, or even meangful, to compare planar slices from the reconstructed pattern with the planar slices used as an input. There is little that can be extrapoled from such a restricted scope to the overall error or error in key pattern features.
 
-$$
-\text{Error}_{\text{az}} = G_{\text{az}}(\phi) - \hat{G}(\phi, \theta = \frac{\pi}{2})
-$$
-
-$$
-\text{Error}_{\text{el}} = 
-\begin{cases} 
-G_{\text{el}}(\theta) - \hat{G}(\theta, \phi=0) & 0 \le \theta < \pi \\
-G_{\text{el}}(\theta) - \hat{G}(\theta, \phi=\pi) & \pi \le \theta < 2\pi 
-\end{cases}
-$$
-
-This produces a graph which looks like:
-![ErrorDemoH](ErrorDemoH.png)
-
-<p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Figure 9: Error comparison between original principal planes and reconstructed pattern cuts</em>
-</p>
-
-> [!WARNING]
-> **This is a non-rigorous approach to calculating error**! While useful, cases may exist where an interpolation method has greater error in the principal slices while having less error in the interpolated 3-D pattern overall (or vice versa). The optimal way to calculate 3-D interpolation error would be finding the difference between the original 3-D antenna pattern and the pattern reconstructed from the principal planes. <br>
-> $$
-> \text{Error}= \left| G(\theta, \phi) - \hat{G}(\theta, \phi) \right|
-> $$
->
-> > [!Success] Note: Using a different antenna pattern, I went back and [[CalculatingTotalError|calculated total error here]] using the optimal method.
+> I decided to export a pattern from HFSS, manually extract the azimuth and elevation slices, interpolate a full pattern, then compare the full 3D-patterns. The results can be found [[CalculatingTotalError|here]]. 
 
 
 ## References

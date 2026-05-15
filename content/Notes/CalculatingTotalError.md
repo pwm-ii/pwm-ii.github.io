@@ -11,44 +11,32 @@ tags:
 
 ## Overview
 
-For one of my technical projects, I created an [[antenna-pattern-interpolator|Antenna Pattern Interpolation Tool]] (named "PIE") which was an open source recreation of a function inside MATLAB's Antenna Toolbox. However, when developing it, I used antenna patterns provided by UniFi for their commercial routers. These only had the principal 2D cuts, so I wasn't able to calculate total error by comparing 3D patterns before and after interpolation. 
+For one of my technical projects, I created an [[antenna-pattern-interpolator|Antenna Pattern Interpolation Tool]] (named "PIE") which was an open source recreation of a function inside MATLAB's Antenna Toolbox. However, when developing it, I used antenna patterns provided by UniFi for their commercial routers. These only had the principal 2D cuts, so I wasn't able to calculate total error by comparing 3D patterns before and after interpolation. What I'm setting out to do here is export the principal 2D slices of an antenna pattern from HFSS, run PIE to get the reconstructed 3D pattern, and then compare that with the 3D antenna pattern exported from HFSS. 
 
-What I'm setting out to do here is export the principal 2D slices of an antenna pattern from HFSS, run PIE to get the reconstructed 3D pattern, and then compare that with the 3D antenna pattern exported from HFSS. This would give me a more robust way to test how the tool functions looking at total error.
+$$
+\text{Error}= \left| G(\theta, \phi) - \hat{G}(\theta, \phi) \right|
+$$
+
+This would give me a more robust way to test how the tool functions by looking at total error. In addition, I can more easily see how the algorithms perform when presented with complex patterns where the underlying assumptions (e.g. pattern seperability) are violated.
 * All gain patterns are for the [[patch-antenna|Microstrip Patch Antenna]] I designed.
-* Note: Interpolation was performed using default weights ($k=2.0$, $n=5.0$)
+* Note: Interpolation was performed using standard weights ($k=2.0$, $n=5.0$). Improved results could be found by tuning weights, but I wanted to test the script's default performance.
 
 ## Exporting from HFSS
 
-First, I exported the 2D and 3D gain plots for the antenna. This data was exported from HFSS in the form of a CSV, but representative images are displayed below:
-
-<div style="display: flex; justify-content: center; gap: 20px;">
-  <div style="width: 48%; text-align: center;">
-    <img src="2DPolarPlot-Elevation.png" alt="2D ElevationPlot Patch" width="100%">
-    <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Fig. 1. Patch antenna gain plot, elevation cut, exported from HFSS.</em>
-    </p>
-  </div>
-
-  <div style="width: 48%; text-align: center;">
-    <img src="2DPolarPlot-Azimuth.png" alt="2D AzimuthPlot Patch" width="100%">
-    <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Fig. 2. Patch antenna gain plot, azimuthal cut, exported from HFSS.</em>
-    </p>
-  </div>
-</div>
+First, I exported the 3D gain plots for the antenna. This data was exported from HFSS in the form of a CSV, but representative images are displayed below:
 
 <div style="display: flex; justify-content: center; align-items: flex-end; gap: 20px;">
   <div style="width: 40%; text-align: center;">
-    <img src="3DPolarPlot.png" alt="3D PolarPlot Patch" width="100%">
+    <img src="3DPolarPlot.png" alt="3D Polar Plot" width="100%">
     <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Fig. 3. Patch antenna 3D gain plot, exported from HFSS.</em>
+      <em>Fig. 1. Patch Antenna 3D Polar Plot, Normalized Gain. Exported from HFSS.</em>
     </p>
   </div>
 
   <div style="width: 55%; text-align: center;">
-    <img src="2DGainContourPlotHFSSPatch.png" alt="2D Gain Contour Plot Patch" width="100%">
+    <img src="MicrostripPatchModel.png" alt="Patch Antenna Geometry" width="100%">
     <p style="font-size: 0.8rem; color: grey; margin-top: 5px;">
-      <em>Fig. 4. Patch antenna 2D gain heatmap, exported from HFSS.</em>
+      <em>Fig. 2. Patch Antenna Geometry. Exported from HFSS.</em>
     </p>
   </div>
 </div>
@@ -56,7 +44,7 @@ First, I exported the 2D and 3D gain plots for the antenna. This data was export
 
 ## Interpolation Output
 
-Some minor reformatting was required to convert the CSVs for the 2D polar graphs into a single ```.ant``` file. I then used this file as an input to generate the following 3D graphs with PIE:
+Next, I used a script to extract the azimuth and elevation cuts as text files from the CSV with the full 3D pattern. I used this file as an input to generate the following 3D graphs with PIE:
 
 <p align="center">
   <img src="SummingPostInterpolation.png" width="50%">
@@ -102,11 +90,11 @@ Now that I had the CSVs for both the 3D pattern from HFSS and the 3D pattern fro
   <em>Fig. 8. Patch antenna error plots, summing algorithm.</em>
 </p>
 
-* Main lobe has been reconstructed in the low $\theta$ region ($\theta < 130^{\circ}$), however, with noticeable angular spreading. We can consider this degradation relatively negligible given that the absolute error graph is predominantly blue in this region, indicating low error (< 5 dB).
+* The main lobe has been roughly reconstructed. However, there is a noticeable low-gain band around $90^{\circ}$ on the radial axis. This band seems to drive error in the forward hemisphere.
 
-* The two nulls have been reconstructed at the correct $\phi$ position (approx. $90^{\circ}$ and $270^{\circ}$). However, we can see that the $\theta$ position of these nulls has been severely degraded.
+* The location of the nulls has been correctly captured in the reconstruction with minor angular spreading. There are, however, noticeable errors in gain magnitude as seen in the error.
 
-* As a result of the failure to reconstruct the null structure, large portions of the high-$\theta$ region ($\theta > 120^{\circ}$) are dominated by severe error (red and dark orange).
+* Overall, the mean bias of -6 dB shows that the algorithm has a systematic tendency to underestimate gain considerably.
 
 ### Approximation Algorithm
 
@@ -117,9 +105,13 @@ Now that I had the CSVs for both the 3D pattern from HFSS and the 3D pattern fro
   <em>Fig. 9. Patch antenna error plots, approximation algorithm.</em>
 </p>
 
-* Main lobe has been successfully reconstructed with less angular spreading.
+* Interestingly, this method was by far the most accurate with the lowest RMSE of 4.8 dB. 
 
-* Nulls have been reconstructed with even more severe degradation in $\phi$-axis spread.
+* There is better main lobe reconstruction as the radial $90^{\circ}$ null band has decreased.
+
+* While the gain magnitude of the nulls was correctly reconstructed, even more severe degradation in $\phi$-axis spread is observed. The nulls are smeared into a continuous band at the aft hemisphere. This causes the most noticeable zone of error in the back lobe (around $225^{\circ}$ and $135^{\circ}$ on the angular axis).
+
+* With a mean bias of only -1.33 dB, the Approximation method stayed remarkably close to the overall energy envelope of the actual pattern, though still a slight underestimation.
 
 
 ### Hybrid Algorithm
@@ -131,14 +123,16 @@ Now that I had the CSVs for both the 3D pattern from HFSS and the 3D pattern fro
   <em>Fig. 10. Patch antenna error plots, hybrid algorithm.</em>
 </p>
 
-* Same fundamental pattern, successful main lobe reconstruction, failed null reconstruction.
+* Interestingly the hybrid method, which was designed to be the best of both worlds, has the worst performance in this for this pattern. Mixing approximation and summing seems only to have inhereted the errors of both algorithms. 
 
-* We can note that $\phi$-axis spread is worse than the summing algorithm but better than the approximation algorithm.
+* Noticeably, the null band in the main lobe has increased in magnitude. Additionally, the aft-nulls have severe angular smearing with the incorrect gain magnitude of summing.
+
+* The severe mean bias indicates that the Hybrid method aggressively under-predicted the gain.
 
 ## Comparison of Algorithms
 
-* In terms of total error, we find that the <u>approximation algorithm achieved the best performance overall</u> (MSE: 74.11, RMSE: 8.61 dB), followed by the hybrid algorithm (MSE: 88.67, RMSE: 9.42 dB), and then the summing algorithm (MSE: 107.98, RMSE: 10.39 dB). This is interesting because while it is intuitive to assume that the summing algorithm would perform worse, the tradeoffs between the approximation and hybrid algorithms are much more subtle.
+* In terms of total error, we find that the <u>approximation algorithm achieved the best performance overall</u> (MSE: 22.7562, RMSE: 4.7703), followed by the summing algorithm (MSE: 63.5815, RMSE: 7.9738), then the hybrid algorithm (MSE: 102.0820, RMSE: 10.1036). This is interesting because while it is intuitive to assume that summing would underperform approximation, the tradeoffs between the approximation and hybrid algorithms are much more subtle.
 
 * From the given patterns, we find that all algorithms exhibit a negative mean bias. This indicates they have a systematic behavior of underestimating the gain. 
-   * However, we find that the approximation algorithm retained the least negative bias (-6.97 dB), followed by the hybrid algorithm (-7.95 dB), then the summing algorithm (-8.81 dB).
-   * This matches exactly what we expect from the literature: that the approximation algorithm is relatively the most "optimistic", the summing algorithm is the most "conservative", and the hybrid algorithm is somewhere in between depending on the weights used.
+   * However, we find that the approximation algorithm retained the least overall bias (-1.334 dB), followed by the summing (-5.9947 dB), then hybrid algorithms (-8.3444 dB).
+   * This matches exactly what we expect from the literature: that the approximation algorithm is relatively the most "optimistic", the summing algorithm is the most "conservative".
