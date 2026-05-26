@@ -14,7 +14,7 @@ export default ((opts?: Options) => {
     return (
   <footer class={`${displayClass ?? ""}`}>
     <p>
-    Last updated: May 15, 2026. © Paul Mola.
+    Last updated: May 25, 2026. © Paul Mola.
     </p>
   </footer>
     )

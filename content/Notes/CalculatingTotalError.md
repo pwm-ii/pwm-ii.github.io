@@ -50,21 +50,21 @@ Next, I used a script to extract the azimuth and elevation cuts as text files fr
   <img src="SummingPostInterpolation.png" width="50%">
 </p>
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Fig. 5. Patch antenna reconstructed 3D pattern, normalized gain, summing algorithm.</em>
+  <em>Fig. 3. Patch antenna reconstructed 3D pattern, normalized gain, summing algorithm.</em>
 </p>
 
 <p align="center">
   <img src="ApproxPostInterpolation.png" width="50%">
 </p>
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Fig. 6. Patch antenna reconstructed 3D pattern, normalized gain, approximation algorithm.</em>
+  <em>Fig. 4. Patch antenna reconstructed 3D pattern, normalized gain, approximation algorithm.</em>
 </p>
 
 <p align="center">
   <img src="HybridPostInterpolation.png" width="50%">
 </p>
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Fig. 7. Patch antenna reconstructed 3D pattern, normalized gain, hybrid algorithm.</em>
+  <em>Fig. 5. Patch antenna reconstructed 3D pattern, normalized gain, hybrid algorithm.</em>
 </p>
 
 ## Visual Error Analysis
@@ -87,7 +87,7 @@ Now that I had the CSVs for both the 3D pattern from HFSS and the 3D pattern fro
   <img src="SummingErrorHeatMaps.png" width="85%">
 </p>
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Fig. 8. Patch antenna error plots, summing algorithm.</em>
+  <em>Fig. 6. Patch antenna error plots, summing algorithm.</em>
 </p>
 
 * The main lobe has been roughly reconstructed. However, there is a noticeable low-gain band around $90^{\circ}$ on the radial axis. This band seems to drive error in the forward hemisphere.
@@ -102,7 +102,7 @@ Now that I had the CSVs for both the 3D pattern from HFSS and the 3D pattern fro
   <img src="ApproxErrorHeatMaps.png" width="85%">
 </p>
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Fig. 9. Patch antenna error plots, approximation algorithm.</em>
+  <em>Fig. 7. Patch antenna error plots, approximation algorithm.</em>
 </p>
 
 * Interestingly, this method was by far the most accurate with the lowest RMSE of 4.8 dB. 
@@ -120,7 +120,7 @@ Now that I had the CSVs for both the 3D pattern from HFSS and the 3D pattern fro
   <img src="HybridErrorHeatMaps.png" width="85%">
 </p>
 <p align="center" style="font-size: 0.8rem; color: grey; margin-top: -10px;">
-  <em>Fig. 10. Patch antenna error plots, hybrid algorithm.</em>
+  <em>Fig. 8. Patch antenna error plots, hybrid algorithm.</em>
 </p>
 
 * Interestingly the hybrid method, which was designed to be the best of both worlds, has the worst performance in this for this pattern. Mixing approximation and summing seems only to have inhereted the errors of both algorithms. 
