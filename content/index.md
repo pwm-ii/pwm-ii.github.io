@@ -31,7 +31,7 @@ title: Home
           <tr style="border-bottom: 1px solid #545353ff;">
             <td style="padding: 3px 6px; vertical-align: top; font-weight: bold; white-space: nowrap !important;">Previous Positions</td>
             <td style="padding: 3px 6px; vertical-align: top; white-space: normal !important; line-height: 1.4 !important;">
-              <a href="https://www.dafhistory.af.mil/About-Us/Fact-Sheets/Display/Article/432899/771-test-squadron-afmc">771st Test Squadron</a><br>
+              <a href="https://www.dafhistory.af.mil/Sandbox/Fact-Sheets/Display/Article/432899/771-test-squadron-afmc/">771st Test Squadron</a><br>
               Electronic Warfare Engineer (Student Trainee)
               <div style="height: 0.5em;"></div>
               <a href="https://www.northropgrumman.com/who-we-are/business-sectors/mission-systems">Northrop Grumman Mission Systems</a><br>
